@@ -8,7 +8,7 @@
  * 
  * The response includes information about temperature, wind speed, weather conditions, and more.
  * @property {Forecast} forecast - Provides weather forecasts for up to 30 days.
- * @property {Geocoding} [geocoding] - Provides access to geocoding-related queries.
+ * @property {Geocoding} geocoding - Provides access to geocoding-related queries.
  * @property {Array<RoadRisk>} roadRisk - Retrieves road risk information based on location and time.
  * This helps assess potential hazards such as slippery roads, fog, or other
  * weather-related risks that may affect driving conditions.
@@ -18,11 +18,11 @@
 /**
  * Provides air pollution data, including current, forecasted, and historical values.
  * @typedef {Object} AirPollution
- * @property {AirPollutionPayload} [current] - Retrieves current air pollution data based on latitude and longitude.
+ * @property {AirPollutionPayload} current - Retrieves current air pollution data based on latitude and longitude.
  * Returns pollutant concentrations and the Air Quality Index (AQI).
- * @property {AirPollutionPayload} [forecast] - Provides an air pollution forecast for the next few days
+ * @property {AirPollutionPayload} forecast - Provides an air pollution forecast for the next few days
  * based on latitude and longitude.
- * @property {AirPollutionPayload} [history] - Fetches historical air pollution data for a given location and time range.
+ * @property {AirPollutionPayload} history - Fetches historical air pollution data for a given location and time range.
  * Useful for analyzing past air quality trends.
  */
 
@@ -38,15 +38,15 @@
 /**
  * Response object for air pollution data, including pollutant concentrations and AQI.
  * @typedef {Object} AirPollutionList
- * @property {Components} [components] - Concentration of various air pollutants at the recorded time.
- * @property {number} [dt] - Timestamp in Unix format (UTC) representing the recorded air pollution data.
- * @property {AirPollutionMain} [main] - Overall air quality index (AQI) at the recorded time.
+ * @property {Components} components - Concentration of various air pollutants at the recorded time.
+ * @property {number} dt - Timestamp in Unix format (UTC) representing the recorded air pollution data.
+ * @property {AirPollutionMain} main - Overall air quality index (AQI) at the recorded time.
  */
 
 /**
  * Represents the overall air quality index (AQI).
  * @typedef {Object} AirPollutionMain
- * @property {number} [aqi] - Air Quality Index (AQI) value.
+ * @property {number} aqi - Air Quality Index (AQI) value.
  * - 1: Good
  * - 2: Fair
  * - 3: Moderate
@@ -63,14 +63,14 @@
 
 /**
  * @typedef {Object} City
- * @property {Coord} [coord] - Coordinates of the city (latitude and longitude).
- * @property {string} [country] - City country code (e.g., "US" for the United States, "IN" for India).
+ * @property {Coord} coord - Coordinates of the city (latitude and longitude).
+ * @property {string} country - City country code (e.g., "US" for the United States, "IN" for India).
  * @property {number} [id] - Unique city identifier. - DEPRECATED: Please note that built-in geocoder functionality has been deprecated.
  * @property {string} [name] - City name (e.g., "London"). - DEPRECATED: Please note that built-in geocoder functionality has been deprecated.
- * @property {number} [population] - City population (the number of people living in the city).
- * @property {number} [sunrise] - The sunrise time in UTC (seconds since 1970-01-01).
- * @property {number} [sunset] - The sunset time in UTC (seconds since 1970-01-01).
- * @property {number} [timezone] - The timezone of the city, in UTC offset (e.g., 0 for UTC, -5 for Eastern Standard Time).
+ * @property {number} population - City population (the number of people living in the city).
+ * @property {number} sunrise - The sunrise time in UTC (seconds since 1970-01-01).
+ * @property {number} sunset - The sunset time in UTC (seconds since 1970-01-01).
+ * @property {number} timezone - The timezone of the city, in UTC offset (e.g., 0 for UTC, -5 for Eastern Standard Time).
  */
 
 /**
@@ -82,16 +82,16 @@
  * Represents the concentration of various air pollutants in the atmosphere.
  * Measured in micrograms per cubic meter (µg/m³).
  * @typedef {Object} Components
- * @property {number} [co] - Carbon monoxide (CO) concentration in the air.
- * @property {number} [nh3] - Ammonia (NH₃) concentration in the air.
- * @property {number} [no] - Nitric oxide (NO) concentration in the air.
- * @property {number} [no2] - Nitrogen dioxide (NO₂) concentration in the air.
- * @property {number} [o3] - Ozone (O₃) concentration in the air.
- * @property {number} [pm2_5] - Particulate matter with a diameter of 2.5 micrometers or smaller (PM2.5).
+ * @property {number} co - Carbon monoxide (CO) concentration in the air.
+ * @property {number} nh3 - Ammonia (NH₃) concentration in the air.
+ * @property {number} no - Nitric oxide (NO) concentration in the air.
+ * @property {number} no2 - Nitrogen dioxide (NO₂) concentration in the air.
+ * @property {number} o3 - Ozone (O₃) concentration in the air.
+ * @property {number} pm2_5 - Particulate matter with a diameter of 2.5 micrometers or smaller (PM2.5).
  * Fine particles that can cause respiratory health issues.
- * @property {number} [pm10] - Particulate matter with a diameter of 10 micrometers or smaller (PM10).
+ * @property {number} pm10 - Particulate matter with a diameter of 10 micrometers or smaller (PM10).
  * Larger airborne particles that can affect air quality and health.
- * @property {number} [so2] - Sulfur dioxide (SO₂) concentration in the air.
+ * @property {number} so2 - Sulfur dioxide (SO₂) concentration in the air.
  */
 
 /**
@@ -147,9 +147,9 @@
  * Represents location details retrieved using a direct search query.
  * @typedef {Object} Direct
  * @property {string} [country] - Country code in ISO 3166 format.
- * @property {number} [lat] - Latitude coordinate of the location.
+ * @property {number} lat - Latitude coordinate of the location.
  * @property {LocalNames} [local_names] - Localized names of the location in various languages.
- * @property {number} [lon] - Longitude coordinate of the location.
+ * @property {number} lon - Longitude coordinate of the location.
  * @property {string} [name] - Name of the location (e.g., city or town).
  * @property {string} [state] - Name of the state or region where the location is situated.
  */
@@ -313,9 +313,9 @@
 /**
  * Provides geocoding services, including direct, reverse, and ZIP code-based lookups.
  * @typedef {Object} Geocoding
- * @property {Array<(Direct|null|undefined)>} [direct] - Searches for a location by name, returning latitude, longitude, and country details.
- * @property {Array<(Reverse|null|undefined)>} [reverse] - Performs reverse geocoding using latitude and longitude to find a location.
- * @property {Zip} [zip] - Finds location details based on a given ZIP code.
+ * @property {Array<Direct>} direct - Searches for a location by name, returning latitude, longitude, and country details.
+ * @property {Array<Reverse>} reverse - Performs reverse geocoding using latitude and longitude to find a location.
+ * @property {Zip} zip - Finds location details based on a given ZIP code.
  */
 
 /**
@@ -748,7 +748,7 @@
  * @typedef {Object} Trigger
  * @property {string} _id - The unique identifier for the trigger.
  * @property {number} _v - The version of the trigger.
- * @property {JSONObject} [alerts] - The alerts associated with this trigger, stored as a JSON object.
+ * @property {JSONObject} alerts - The alerts associated with this trigger, stored as a JSON object.
  * @property {Array<IArea>} area - A list of geographical areas associated with the trigger.
  * @property {Array<Conditions>} conditions - A list of conditions that must be met for the trigger to be activated.
  * @property {TimePeriod} time_period - The time period for which the trigger is valid. This includes both start and end times.

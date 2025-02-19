@@ -32,7 +32,7 @@ export type Api = {
   /** Provides weather forecasts for up to 30 days. */
   forecast: Forecast;
   /** Provides access to geocoding-related queries. */
-  geocoding?: Maybe<Geocoding>;
+  geocoding: Geocoding;
   /**
    * Retrieves road risk information based on location and time.
    * This helps assess potential hazards such as slippery roads, fog, or other
@@ -61,17 +61,17 @@ export type AirPollution = {
    * Retrieves current air pollution data based on latitude and longitude.
    * Returns pollutant concentrations and the Air Quality Index (AQI).
    */
-  current?: Maybe<AirPollutionPayload>;
+  current: AirPollutionPayload;
   /**
    * Provides an air pollution forecast for the next few days
    * based on latitude and longitude.
    */
-  forecast?: Maybe<AirPollutionPayload>;
+  forecast: AirPollutionPayload;
   /**
    * Fetches historical air pollution data for a given location and time range.
    * Useful for analyzing past air quality trends.
    */
-  history?: Maybe<AirPollutionPayload>;
+  history: AirPollutionPayload;
 };
 
 
@@ -108,11 +108,11 @@ export type AirPollutionHistoryInput = {
 export type AirPollutionList = {
   __typename?: 'AirPollutionList';
   /** Concentration of various air pollutants at the recorded time. */
-  components?: Maybe<Components>;
+  components: Components;
   /** Timestamp in Unix format (UTC) representing the recorded air pollution data. */
-  dt?: Maybe<Scalars['Int']['output']>;
+  dt: Scalars['Int']['output'];
   /** Overall air quality index (AQI) at the recorded time. */
-  main?: Maybe<AirPollutionMain>;
+  main: AirPollutionMain;
 };
 
 /** Represents the overall air quality index (AQI). */
@@ -126,7 +126,7 @@ export type AirPollutionMain = {
    * - 4: Poor
    * - 5: Very Poor
    */
-  aqi?: Maybe<Scalars['Int']['output']>;
+  aqi: Scalars['Int']['output'];
 };
 
 /** Payload for air pollution data, including historical, current, or forecasted values. */
@@ -141,9 +141,9 @@ export type AirPollutionPayload = {
 export type City = {
   __typename?: 'City';
   /** Coordinates of the city (latitude and longitude). */
-  coord?: Maybe<Coord>;
+  coord: Coord;
   /** City country code (e.g., "US" for the United States, "IN" for India). */
-  country?: Maybe<Scalars['String']['output']>;
+  country: Scalars['String']['output'];
   /**
    * Unique city identifier.
    * @deprecated Please note that built-in geocoder functionality has been deprecated.
@@ -155,13 +155,13 @@ export type City = {
    */
   name?: Maybe<Scalars['String']['output']>;
   /** City population (the number of people living in the city). */
-  population?: Maybe<Scalars['Int']['output']>;
+  population: Scalars['Int']['output'];
   /** The sunrise time in UTC (seconds since 1970-01-01). */
-  sunrise?: Maybe<Scalars['Int']['output']>;
+  sunrise: Scalars['Int']['output'];
   /** The sunset time in UTC (seconds since 1970-01-01). */
-  sunset?: Maybe<Scalars['Int']['output']>;
+  sunset: Scalars['Int']['output'];
   /** The timezone of the city, in UTC offset (e.g., 0 for UTC, -5 for Eastern Standard Time). */
-  timezone?: Maybe<Scalars['Int']['output']>;
+  timezone: Scalars['Int']['output'];
 };
 
 export type Clouds = {
@@ -177,27 +177,27 @@ export type Clouds = {
 export type Components = {
   __typename?: 'Components';
   /** Carbon monoxide (CO) concentration in the air. */
-  co?: Maybe<Scalars['Float']['output']>;
+  co: Scalars['Float']['output'];
   /** Ammonia (NH₃) concentration in the air. */
-  nh3?: Maybe<Scalars['Float']['output']>;
+  nh3: Scalars['Float']['output'];
   /** Nitric oxide (NO) concentration in the air. */
-  no?: Maybe<Scalars['Float']['output']>;
+  no: Scalars['Float']['output'];
   /** Nitrogen dioxide (NO₂) concentration in the air. */
-  no2?: Maybe<Scalars['Float']['output']>;
+  no2: Scalars['Float']['output'];
   /** Ozone (O₃) concentration in the air. */
-  o3?: Maybe<Scalars['Float']['output']>;
+  o3: Scalars['Float']['output'];
   /**
    * Particulate matter with a diameter of 2.5 micrometers or smaller (PM2.5).
    * Fine particles that can cause respiratory health issues.
    */
-  pm2_5?: Maybe<Scalars['Float']['output']>;
+  pm2_5: Scalars['Float']['output'];
   /**
    * Particulate matter with a diameter of 10 micrometers or smaller (PM10).
    * Larger airborne particles that can affect air quality and health.
    */
-  pm10?: Maybe<Scalars['Float']['output']>;
+  pm10: Scalars['Float']['output'];
   /** Sulfur dioxide (SO₂) concentration in the air. */
-  so2?: Maybe<Scalars['Float']['output']>;
+  so2: Scalars['Float']['output'];
 };
 
 export type Conditions = {
@@ -279,11 +279,11 @@ export type Direct = {
   /** Country code in ISO 3166 format. */
   country?: Maybe<Scalars['String']['output']>;
   /** Latitude coordinate of the location. */
-  lat?: Maybe<Scalars['Float']['output']>;
+  lat: Scalars['Float']['output'];
   /** Localized names of the location in various languages. */
   local_names?: Maybe<LocalNames>;
   /** Longitude coordinate of the location. */
-  lon?: Maybe<Scalars['Float']['output']>;
+  lon: Scalars['Float']['output'];
   /** Name of the location (e.g., city or town). */
   name?: Maybe<Scalars['String']['output']>;
   /** Name of the state or region where the location is situated. */
@@ -559,11 +559,11 @@ export type Forecast30Options = {
 export type Geocoding = {
   __typename?: 'Geocoding';
   /** Searches for a location by name, returning latitude, longitude, and country details. */
-  direct?: Maybe<Array<Maybe<Direct>>>;
+  direct: Array<Direct>;
   /** Performs reverse geocoding using latitude and longitude to find a location. */
-  reverse?: Maybe<Array<Maybe<Reverse>>>;
+  reverse: Array<Reverse>;
   /** Finds location details based on a given ZIP code. */
-  zip?: Maybe<Zip>;
+  zip: Zip;
 };
 
 
@@ -1180,7 +1180,7 @@ export type Trigger = {
   /** The version of the trigger. */
   _v: Scalars['Int']['output'];
   /** The alerts associated with this trigger, stored as a JSON object. */
-  alerts?: Maybe<Scalars['JSONObject']['output']>;
+  alerts: Scalars['JSONObject']['output'];
   /** A list of geographical areas associated with the trigger. */
   area: Array<IArea>;
   /** A list of conditions that must be met for the trigger to be activated. */
