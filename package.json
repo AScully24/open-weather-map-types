@@ -1,0 +1,20 @@
+{
+	"name": "@gurafu/open-weather-map-types",
+	"version": "0.0.1",
+	"main": "",
+	"files": [
+		"./*.d.ts",
+		"./*.json",
+		"./*.js"
+	],
+	"keywords": [],
+	"author": "gurafu",
+	"license": "ISC",
+	"types": "./graphql.d.ts",
+	"description": "Type definitions for Open Weather Map GraphQL Proxy",
+	"scripts": {
+		"patch": "npm version patch && npm publish",
+		"minor": "npm version minor && npm publish",
+		"major": "npm version major && npm publish"
+	}
+}
